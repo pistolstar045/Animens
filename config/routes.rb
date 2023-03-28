@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
    root to: "homes#top"
 
-  get 'customers/index' => 'customers#index', as:'customers'
+  get 'customers/index' => 'customers#index', as:"customers"
   get "customers/show" => "customers#show", as:"customers_my_page"
   get 'customers/information/edit' => 'customers#edit', as: 'edit_customer'
   patch 'customers/information' => 'customers#update', as: 'update_customer'

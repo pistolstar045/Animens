@@ -1,17 +1,20 @@
 class ApplicationController < ActionController::Base
+   before_action :authenticate_customer!, except: [:top]
+
+
   def after_sign_up_path_for(resource)
     customers_my_page_path
   end
 
   def after_sign_in_path_for(resource)
     customers_my_page_path
-end
+  end
 
 def after_sign_out_path_for(resource)
     new_customer_session_path
 end
 
-protected
+ private
 
  def reject_customer
   @customer = Customer.find_by(email: params[:customer][:email])
@@ -27,5 +30,13 @@ protected
     customer_session_path
   end
  end
+
+
 end
+
+
+
+
+
+
 
