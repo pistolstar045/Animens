@@ -1,0 +1,19 @@
+<table class="table anime_comment-index">
+ <thead>
+  <th>ユーザー名</th>
+  <th>コメント</th>
+ </thead>
+ <tbody>
+  <% anime.anime_comments.each do |anime_comment| %>
+   <tr>
+    <td><%= anime_comment.customer.name %></td>
+    <td><%= anime_comment.comment %></td>
+    <td>
+     <% if anime_comment.customer == current_customer %>
+      <%= link_to "Destroy", anime_anime_comment_path(anime, anime_comment), method: :delete, class: "btn btn-danger pull-right", remote: true %>
+     <% end %>
+    </td>
+   </tr>
+  <% end %>
+ </tbody>
+</table>

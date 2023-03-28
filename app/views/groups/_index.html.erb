@@ -1,0 +1,21 @@
+<table class='table'>
+ <thead>
+  <tr>
+   <th>グループ画像</th>
+   <th>グループ名</th>
+   <th>メンバー数</th>
+  </tr>
+ </thead>
+ <tbody>
+  <% groups.each do |group| %>
+  <tr>
+   <td><%= image_tag group.get_image, size: '50x50' %></td>
+   <td><%= link_to group.name, group, class: "group_#{group.id}" %></td>
+   <td><%= group.group_customers.count %></td>
+   <% if group.is_owned_by?(current_customer) %>
+   <td><%= link_to 'グループ編集', edit_group_path(group), class: "group_#{group.id} btn btn-success" %></td>
+   <% end %>
+  </tr>
+  <% end %>
+ </tbody>
+</table>

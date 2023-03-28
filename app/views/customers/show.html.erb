@@ -1,0 +1,21 @@
+<h2>会員詳細</h2>
+<table class="table table-user">
+ <tr>
+  <% if @customer.profile_image.attached? %>
+   <%= image_tag @customer.profile_image, size: "80x80" %>
+  <% else %>
+   <%= image_tag 'no_image.jpg', size: "80x80" %>
+  <% end %>
+ </tr>
+ <tr>
+  <th>名前</th>
+  <th><%= @customer.name %></th>
+ </tr>
+ <tr>
+  <th>紹介文</th>
+  <th><%= @customer.introduction %></th>
+ </tr>
+</table>
+<% if @customer = current_customer %>
+ <%= link_to "プロフィールを編集する", edit_customer_path(@customer), class: 'btn btn-secondary'  %>
+<% end %>

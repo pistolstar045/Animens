@@ -1,0 +1,23 @@
+<h2>編集画面</h2>
+<%= form_with model: @customer, url: update_customer_path(current_customer), method: :patch do |f| %>
+ <div class="form-group">
+ <div class="customer-name">名前</div>
+  <%= f.text_field :name, class: "form-control" %>
+ </div>
+ <div class="form-group">
+ <div class="customer-edit-image">プロフィール画像</div>
+  <%= f.file_field :profile_image, accept: "image/*" %>
+ </div>
+ <div class="form-group">
+ <div class="form-body">紹介文</div>
+  <%= f.text_area :introduction, class: "form-control" %>
+ </div>
+ <div class="upload">
+  <%= f.submit "更新する", class:"btn btn-success" do %>
+  <% end %>
+ </div>
+ <div class="delete">
+  <%= link_to "退会する", unsubscribe_path, class: 'btn btn-sm btn-danger' %>
+  <% end %>
+ </div>
+ 

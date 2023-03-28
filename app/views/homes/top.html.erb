@@ -1,0 +1,33 @@
+<h1>Animensへようこそ！！</h1>
+<p>
+  当サイトは「アニメ」というコンテンツを通して、<br>
+　他のメンバーの方と交流する場となっています。<br>
+　また、自分の好きなアニメ作品を共有したり、<br>
+　他のメンバーとグループを作ることもできます。<br>
+</p>
+<% if customer_signed_in? %>
+　<p>
+    アニメを投稿したい方は
+    <%= link_to '新規投稿', new_anime_path, class: 'btn btn-primary' %>　へ
+　</p><br>
+  <p>
+    他のメンバーの投稿を見たい方は
+    <%= link_to '投稿一覧', animes_path, class: "btn btn-warning"  %>　へ
+  </p><br>
+  <p>
+    グループに参加したい方は
+    <%= link_to "グループ一覧", groups_path, class: "btn btn-info" %>　へ
+  </p>
+  <% else %>
+  <p>
+   ユーザー登録がお済でない方は
+   <%= link_to "こちら", new_customer_registration_path %>
+   からお願いします
+  </p>
+
+  <p>登録済みの方は
+   <%= link_to "こちら", new_customer_session_path %>
+   からログインして下さい
+  </p>
+  <% end %>
+  

@@ -1,0 +1,38 @@
+<h2><%= @anime.title %></h2>
+ <table class="table table-customer-show">
+ <thead>
+  <th>投稿画像</th>
+  <th>タイトル</th>
+  <th>感想</th>
+  <th>いいね数</th>
+  <th>コメント数</th>
+ </thead>
+ <tbody>
+  <tr>
+   <td>
+    <% if @anime.image.attached? %>
+     <%= image_tag @anime.image, size: "80x80" %>
+    <% else %>
+     <%= image_tag 'no_image.jpg', size: "80x80" %>
+    <% end %>
+   </td>
+   <td><%= @anime.title %></td>
+   <td><%= @anime.body %></td>
+   <td><%= render "favorites/btn", anime: @anime %></td>
+   <td><%= @anime.anime_comments.count %></td>
+   <td></td>
+   <% if @anime.customer == current_customer %>
+   <td><%= link_to "編集する", edit_anime_path(@anime), class:"btn btn-sm btn-success"%></td>
+   <td><%= link_to "削除する", anime_path(@anime), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-sm btn-danger" %></td>
+   <% end %>
+  </tr>
+ </tbody>
+</table>
+<h3>コメント欄</h3>
+<div class="anime-comments-index">
+ <%= render "anime_comments/index", anime: @anime %>
+</div>
+<%= render "anime_comments/form", anime: @anime, anime_comment: @anime_comment %>
+<p>
+  <%= link_to '投稿一覧', animes_path, class: "btn btn-warning"  %>へ戻る
+</p>
