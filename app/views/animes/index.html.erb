@@ -12,6 +12,11 @@
      <td>
       <% if anime.image.attached? %>
        <%= image_tag anime.image, size: "80x80" %>
+       <div class="tag-box">
+       <% anime.tags.each do |tag| %>
+        <span><%= tag.name %></span>
+       <% end %>
+     </div>
       <% else %>
        <%= image_tag 'no_image.jpg', size: "80x80" %>
       <% end %>

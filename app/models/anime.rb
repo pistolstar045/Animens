@@ -1,7 +1,8 @@
 class Anime < ApplicationRecord
-   belongs_to :customer, optional: true
+  belongs_to :customer, optional: true
   has_many :anime_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :tags, dependent: :destroy
   has_one_attached :image
   
   
@@ -20,4 +21,5 @@ class Anime < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
    end
 end
+
 

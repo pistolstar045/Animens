@@ -6,6 +6,10 @@ class AnimesController < ApplicationController
   def create
     @anime = Anime.new(anime_params)
   if @anime.save
+    tags = Vision.get_image_data(@anime.image)
+    tags.each do |tag|
+      @anime.tags.create(name: tag)
+    end
     redirect_to anime_path(@anime.id)
   else
      @customer = current_customer
@@ -63,4 +67,5 @@ class AnimesController < ApplicationController
     params.require(:anime).permit(:title, :body, :image)
   end
 end
+
 
